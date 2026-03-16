@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: main # Certifique-se de que sua branch no GitHub se chama main
+
+media_folder: "img" # Onde as imagens novas serão salvas
+public_folder: "img"
+
+collections:
+  - name: "landing_page"
+    label: "Página de Vendas"
+    files:
+      - file: "index.html" # O arquivo que vamos editar
+        label: "Conteúdo da Home"
+        name: "home"
+        fields:
+          - { label: "Título Principal", name: "titulo", widget: "string" }
+          - { label: "Subtítulo", name: "descricao", widget: "text" }
+          - { label: "Imagem do Produto", name: "imagem", widget: "image" }
+          - { label: "Preço do Pack", name: "preco", widget: "string" }

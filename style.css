@@ -1,0 +1,118 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Fundo da página: Escuro com um gradiente radial suave */
+body {
+    background-color: #050914; /* Azul escuro quase preto */
+    background-image: radial-gradient(circle at center, #0a1128 0%, #050914 100%);
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabeçalho / Hero Section */
+.hero {
+    text-align: center;
+    padding: 120px 20px 80px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #fff;
+    /* Brilho neon no texto do título */
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.4), 0 0 20px rgba(0, 210, 255, 0.2); 
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+    color: #a0aec0;
+}
+
+/* Botão de Compra - Estilo Cyberpunk/Neon */
+.btn-comprar {
+    background: transparent;
+    color: #00d2ff;
+    text-decoration: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 2px solid #00d2ff;
+    border-radius: 50px; /* Bordas bem arredondadas */
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.2), inset 0 0 10px rgba(0, 210, 255, 0.1);
+    display: inline-block;
+}
+
+/* Efeito ao passar o mouse no botão */
+.btn-comprar:hover {
+    background: #00d2ff;
+    color: #050914;
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.8);
+    transform: translateY(-3px);
+}
+
+/* Seção de Benefícios */
+.beneficios {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.beneficios h2 {
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+    color: #fff;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Efeito de Vidro (Glassmorphism) nos Cards */
+.card {
+    background: rgba(255, 255, 255, 0.03); /* Fundo quase transparente */
+    backdrop-filter: blur(10px); /* O desfoque mágico do vidro */
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px 30px;
+    border-radius: 15px;
+    width: 320px;
+    border: 1px solid rgba(0, 210, 255, 0.1); /* Borda brilhante bem suave */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+/* Efeito de flutuação e brilho ao passar o mouse no card */
+.card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(0, 210, 255, 0.5); 
+}
+
+.card h3 {
+    color: #00d2ff;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.card p {
+    color: #a0aec0;
+    line-height: 1.6;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: auto; 
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #718096;
+}
