@@ -5,43 +5,41 @@ backend:
 media_folder: "img"
 public_folder: "img"
 
+# Desativa a pré-visualização para o painel ficar mais limpo e rápido
+show_preview_links: false
+
 collections:
-  # CONFIGURAÇÃO DA PÁGINA INICIAL
   - name: "paginas"
-    label: "Páginas"
+    label: "🖥️ Configurações do Site" # Ícone ajuda a identificar rápido
+    delete: false # Segurança para você não deletar a home sem querer
+    editor:
+      preview: false # Foca apenas nos campos de texto
     files:
-      - file: "data/home.json" # Agora vamos salvar os dados em um arquivo separado
-        label: "Página de Vendas (Home)"
+      - file: "data/home.json"
+        label: "Página Inicial (Home)"
         name: "home"
         fields:
-          - { label: "Título Principal", name: "titulo", widget: "string" }
-          - { label: "Subtítulo", name: "descricao", widget: "text" }
-          - { label: "Imagem de Destaque", name: "imagem", widget: "image" }
-          - { label: "Link do Botão de Compra", name: "link_checkout", widget: "string" }
-          - { label: "Texto do Botão", name: "texto_botao", widget: "string" }
+          - { label: "--- TEXTOS DO TOPO (HERO) ---", name: "section_hero", widget: "hidden" }
+          - { label: "Título da Aba", name: "site_title", widget: "string", hint: "O nome que aparece lá em cima na aba do navegador." }
+          - { label: "Título Principal", name: "titulo", widget: "string", hint: "A frase principal que o cliente lê primeiro." }
+          - { label: "Subtítulo", name: "descricao", widget: "text", hint: "Explique em uma frase o maior benefício do seu pack." }
+          
+          - { label: "--- CONFIGURAÇÕES DE VENDA ---", name: "section_vendas", widget: "hidden" }
+          - { label: "Imagem do Pack", name: "imagem", widget: "image", hint: "Suba a arte oficial do seu produto." }
+          - { label: "Texto do Botão", name: "texto_botao", widget: "string", hint: "Ex: 'Quero meu acesso agora!'" }
+          - { label: "Link da Kiwify/Checkout", name: "link_checkout", widget: "string", hint: "Cole aqui o link de pagamento gerado na sua plataforma." }
+          - { label: "Preço de Oferta", name: "preco", widget: "string", hint: "Ex: R$ 47,00" }
 
-  # CONFIGURAÇÃO PARA PRODUTOS INDEPENDENTES (FUTURO)
   - name: "produtos"
-    label: "Meus Produtos"
-    folder: "data/produtos" # Cada novo produto vira um arquivo aqui
-    create: true # Permite que você crie novos produtos pelo painel
+    label: "📦 Catálogo de Packs"
+    folder: "data/produtos"
+    create: true # Botão 'New Produto' para o seu futuro catálogo
     slug: "{{slug}}"
+    editor:
+      preview: false
     fields:
-      - { label: "Nome do Produto", name: "title", widget: "string" }
+      - { label: "Nome do Pack", name: "title", widget: "string" }
       - { label: "Preço", name: "preco", widget: "string" }
-      - { label: "Descrição Curta", name: "body", widget: "markdown" }
-      - { label: "Imagem do Produto", name: "imagem", widget: "image" }
-      - { label: "Link de Oferta", name: "link_venda", widget: "string" }
-
-      # CONFIGURAÇÃO PARA PRODUTOS INDEPENDENTES (FUTURO)
-  - name: "produtos"
-    label: "Meus Produtos"
-    folder: "data/produtos" # Cada novo produto vira um arquivo aqui
-    create: true # Permite que você crie novos produtos pelo painel
-    slug: "{{slug}}"
-    fields:
-      - { label: "Nome do Produto", name: "title", widget: "string" }
-      - { label: "Preço", name: "preco", widget: "string" }
-      - { label: "Descrição Curta", name: "body", widget: "markdown" }
-      - { label: "Imagem do Produto", name: "imagem", widget: "image" }
-      - { label: "Link de Oferta", name: "link_venda", widget: "string" }
+      - { label: "Descrição", name: "body", widget: "markdown" }
+      - { label: "Foto do Pack", name: "imagem", widget: "image" }
+      - { label: "Link de Checkout", name: "link_venda", widget: "string" }
