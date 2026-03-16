@@ -135,3 +135,27 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     color: #718096;
 }
+/* Estilo base do botão futurista */
+.btn-comprar {
+    display: inline-block;
+    background: transparent;
+    color: #00d2ff !important; /* Força a cor ciano */
+    text-decoration: none !important; /* Tira a linha de baixo de vez */
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 2px solid #00d2ff;
+    border-radius: 50px;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.2), inset 0 0 10px rgba(0, 210, 255, 0.1);
+    margin-top: 20px;
+}
+
+/* O efeito de "Brilho" ao passar o mouse (Hover) */
+.btn-comprar:hover {
+    background: #00d2ff;
+    color: #050914 !important; /* Cor escura do fundo */
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.8), 0 0 60px rgba(0, 210, 255, 0.4);
+    transform: scale(1.05); 
+    text-decoration: none !important;
+}
