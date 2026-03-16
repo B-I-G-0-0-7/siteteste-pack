@@ -9,14 +9,158 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="img/favicon.png" alt="Logo">
+            <span>Saldo Extra</span>
+        </a>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="#beneficios">Benefícios</a></li>
+            <li><a href="#packs">Packs</a></li>
+            <li><a href="/admin/">Login Admin</a></li>
+        </ul>
+    </nav>
 
     <header class="hero">
-        <h1>Destrave sua Produtividade com o Melhor Pack de Prompts</h1>
-        <p>Economize horas de trabalho com templates prontos e testados para IA.</p>
-        <img src="" alt="" class="imagem-produto" style="display:none;">
-        <a href="#" class="btn-comprar" id="botao-checkout">Garantir Meu Pack Agora</a>
+        <div class="hero-text">
+            <h1>Destrave sua Produtividade com o Melhor Pack de Prompts</h1>
+            <p>Economize horas de trabalho com templates prontos e testados para IA.</p>
+            <a href="#" class="btn-comprar" id="botao-checkout">Garantir Meu Pack Agora</a>
+        </div>
+        
+        <div class="hero-media">
+            <img src="" alt="Produto" class="imagem-produto" style="display:none;">
+        </div>
     </header>
 
+    <section class="beneficios" id="beneficios">
+        ```
+
+---
+
+### Passo 2: Atualizar o CSS (A Pintura)
+
+Agora precisamos dizer para o navegador colocar o menu lá no topo e colocar os textos e a imagem lado a lado.
+
+Abra o seu **`style.css`**. Apague a parte que controla a `.hero` e a `.imagem-produto` antiga, e adicione este código novo (pode colar logo abaixo do seletor `body`):
+
+```css
+/* ===============================
+   BARRA DE NAVEGAÇÃO (MENU)
+================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5% ;
+    background: rgba(5, 9, 20, 0.9); /* Fundo escuro com leve transparência */
+    backdrop-filter: blur(10px); /* Efeito de vidro */
+    position: fixed; /* Fica travado no topo ao rolar a página */
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 210, 255, 0.1); /* Linha sutil embaixo */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 40px; /* Tamanho da sua logo */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #a0aec0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #00d2ff; /* Brilha em ciano ao passar o mouse */
+}
+
+/* ===============================
+   ÁREA PRINCIPAL (TEXTO NA ESQUERDA, FOTO NA DIREITA)
+================================== */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 150px 5% 80px; /* Espaço extra no topo por causa do menu */
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 50px;
+}
+
+.hero-text {
+    flex: 1; /* Ocupa metade da tela */
+    text-align: left; /* Alinha o texto à esquerda igual a Kiwify */
+}
+
+.hero-media {
+    flex: 1; /* Ocupa a outra metade da tela */
+    display: flex;
+    justify-content: center;
+}
+
+/* Ajustes visuais da Hero */
+.hero-text h1 {
+    font-size: 3.2rem;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.4); 
+    line-height: 1.2;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #a0aec0;
+}
+
+/* Estilo da Imagem Limitada */
+.imagem-produto {
+    max-width: 100%;
+    width: 450px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.15);
+}
+
+/* ===============================
+   RESPONSIVO (PARA CELULAR)
+================================== */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column; /* Coloca um embaixo do outro no celular */
+        text-align: center;
+        padding-top: 120px;
+    }
+    .hero-text {
+        text-align: center;
+    }
+    .nav-links {
+        display: none; /* Esconde os links no celular para não quebrar a tela */
+    }
+}
     <section class="beneficios">
         <h2>O que você vai receber?</h2>
         <div class="cards">
