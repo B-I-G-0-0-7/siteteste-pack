@@ -4,42 +4,32 @@ backend:
 
 media_folder: "img"
 public_folder: "img"
-
-# Desativa a pré-visualização para o painel ficar mais limpo e rápido
 show_preview_links: false
 
 collections:
   - name: "paginas"
-    label: "🖥️ Configurações do Site" 
-    delete: false 
-    editor:
-      preview: false 
-    files:
-      - file: "data/home.json"
-        label: "Página Inicial (Home)"
-        name: "home"
-        fields:
-          - { label: "--- TEXTOS DO TOPO (HERO) ---", name: "section_hero", widget: "hidden" }
-          - { label: "Título da Aba", name: "site_title", widget: "string", hint: "O nome que aparece lá em cima na aba do navegador." }
-          - { label: "Título Principal", name: "titulo", widget: "string", hint: "A frase principal que o cliente lê primeiro." }
-          - { label: "Subtítulo", name: "descricao", widget: "text", hint: "Explique em uma frase o maior benefício do seu pack." }
-          
-          - { label: "--- CONFIGURAÇÕES DE VENDA ---", name: "section_vendas", widget: "hidden" }
-          - { label: "Imagem do Pack", name: "imagem", widget: "image", hint: "Suba a arte oficial do seu produto." }
-          - { label: "Texto do Botão", name: "texto_botao", widget: "string", hint: "Ex: 'Quero meu acesso agora!'" }
-          - { label: "Link da Kiwify/Checkout", name: "link_checkout", widget: "string", hint: "Cole aqui o link de pagamento gerado na sua plataforma." }
-          - { label: "Preço de Oferta", name: "preco", widget: "string", hint: "Ex: R$ 47,00" }
-
-  - name: "produtos"
-    label: "📦 Catálogo de Packs"
-    folder: "data/produtos"
-    create: true 
-    slug: "{{slug}}"
+    label: "⚙️ Construtor do Site"
+    delete: false
     editor:
       preview: false
-    fields:
-      - { label: "Nome do Pack", name: "title", widget: "string" }
-      - { label: "Preço", name: "preco", widget: "string" }
-      - { label: "Descrição", name: "body", widget: "markdown" }
-      - { label: "Foto do Pack", name: "imagem", widget: "image" }
-      - { label: "Link de Checkout", name: "link_venda", widget: "string" }
+    files:
+      - file: "data/home.json"
+        label: "Página Principal (Home)"
+        name: "home"
+        fields:
+          - { label: "Título da Aba do Navegador", name: "site_title", widget: "string", required: false }
+          
+          # AQUI É A MÁGICA: Uma lista onde você cria quantos blocos quiser
+          - name: "secoes"
+            label: "Seções do Site (Crie os blocos da página)"
+            widget: "list"
+            summary: 'Bloco: {{fields.titulo}}'
+            fields:
+              - { label: "Título", name: "titulo", widget: "string", required: false }
+              - { label: "Texto", name: "texto", widget: "text", required: false }
+              - { label: "Posição", name: "layout", widget: "select", options: ["Midia na Direita", "Midia na Esquerda", "Centralizado", "Sem Midia"], default: "Midia na Direita" }
+              - { label: "O que vai mostrar?", name: "tipo_midia", widget: "select", options: ["Imagem", "YouTube"], default: "Imagem" }
+              - { label: "Imagem (Se escolheu Imagem)", name: "imagem", widget: "image", required: false }
+              - { label: "Link do YouTube (Se escolheu YouTube)", name: "youtube", widget: "string", hint: "Ex: https://www.youtube.com/watch?v=...", required: false }
+              - { label: "Texto do Botão", name: "texto_botao", widget: "string", required: false }
+              - { label: "Link do Botão", name: "link_botao", widget: "string", required: false }

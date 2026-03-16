@@ -10,39 +10,21 @@
 </head>
 <body>
 
-  <nav class="navbar">
+    <nav class="navbar">
         <a href="index.html" class="logo">
             <span>Saldo Extra</span>
         </a>
         <ul class="nav-links">
             <li><a href="index.html">Início</a></li>
-            <li><a href="#beneficios">Benefícios</a></li>
-            </ul>
+        </ul>
     </nav>
-    <header class="hero">
-        <div class="hero-text">
-            <h1>Destrave sua Produtividade com o Melhor Pack de Prompts</h1>
-            <p>Economize horas de trabalho com templates prontos e testados para IA.</p>
-            <a href="#" class="btn-comprar" id="botao-checkout">Garantir Meu Pack Agora</a>
-        </div>
-        <div class="hero-media">
-            <img src="" alt="Produto" class="imagem-produto" style="display:none;">
-        </div>
-    </header>
 
-    <section class="beneficios" id="beneficios">
-        <h2>O que você vai receber?</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>+100 Prompts Validados</h3>
-                <p>Estruturas prontas para copiar e colar.</p>
-            </div>
-            <div class="card">
-                <h3>Bônus Exclusivo</h3>
-                <p>Guia de como adaptar os prompts para o seu nicho.</p>
-            </div>
+    <main id="conteudo-dinamico">
+        <div style="text-align: center; padding: 200px 20px;">
+            <h2>Atualizando seu site...</h2>
+            <p>Se demorar muito, acesse o /admin e crie sua primeira seção!</p>
         </div>
-    </section>
+    </main>
 
     <footer>
         <p>&copy; 2026 Seus Prompts. Todos os direitos reservados.</p>
@@ -52,9 +34,7 @@
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
           if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
+            window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
           }
         });
       }
@@ -62,24 +42,56 @@
 
     <script>
       fetch('/data/home.json')
-        .then(response => {
-          if (!response.ok) throw new Error('Sem dados');
-          return response.json();
-        })
+        .then(res => res.json())
         .then(data => {
-          if(data.titulo) document.querySelector('.hero h1').innerText = data.titulo;
-          if(data.descricao) document.querySelector('.hero p').innerText = data.descricao;
-          if(data.link_checkout) document.getElementById('botao-checkout').href = data.link_checkout;
-          if(data.texto_botao) document.getElementById('botao-checkout').innerText = data.texto_botao;
+          if(data.site_title) document.title = data.site_title;
           
-          const imgElement = document.querySelector('.imagem-produto');
-          if(data.imagem) {
-            imgElement.src = data.imagem;
-            imgElement.style.display = 'block';
+          const main = document.getElementById('conteudo-dinamico');
+          main.innerHTML = ''; // Limpa a mensagem de carregando
+          
+          if(data.secoes && data.secoes.length > 0) {
+            data.secoes.forEach(secao => {
+              
+              // Lógica de Mídia (YouTube ou Imagem)
+              let mediaHTML = '';
+              if (secao.tipo_midia === 'YouTube' && secao.youtube) {
+                  let ytID = '';
+                  if (secao.youtube.includes('v=')) ytID = secao.youtube.split('v=')[1].split('&')[0];
+                  else if (secao.youtube.includes('youtu.be/')) ytID = secao.youtube.split('youtu.be/')[1].split('?')[0];
+                  
+                  if (ytID) {
+                      mediaHTML = `<iframe class="media-dinamica video-yt" src="https://www.youtube.com/embed/${ytID}" frameborder="0" allowfullscreen></iframe>`;
+                  }
+              } else if (secao.tipo_midia === 'Imagem' && secao.imagem) {
+                  mediaHTML = `<img src="${secao.imagem}" class="media-dinamica">`;
+              }
+
+              // Lógica do Botão
+              let botaoHTML = secao.texto_botao && secao.link_botao 
+                ? `<a href="${secao.link_botao}" class="btn-comprar">${secao.texto_botao}</a>` : '';
+
+              // Decide a Posição
+              let classeLayout = 'layout-direita';
+              if (secao.layout === 'Midia na Esquerda') classeLayout = 'layout-esquerda';
+              if (secao.layout === 'Centralizado') classeLayout = 'layout-centro';
+              if (secao.layout === 'Sem Midia') mediaHTML = '';
+
+              // Monta e joga na tela
+              const sectionHTML = `
+                <section class="secao-bloco ${classeLayout}">
+                   <div class="bloco-texto">
+                      ${secao.titulo ? `<h1>${secao.titulo}</h1>` : ''}
+                      ${secao.texto ? `<p>${secao.texto}</p>` : ''}
+                      ${botaoHTML}
+                   </div>
+                   ${mediaHTML ? `<div class="bloco-midia">${mediaHTML}</div>` : ''}
+                </section>
+              `;
+              main.innerHTML += sectionHTML;
+            });
           }
         })
-        .catch(err => console.log('Aguardando painel...'));
+        .catch(err => console.log('Aguardando criação no painel...'));
     </script>
-
 </body>
 </html>
