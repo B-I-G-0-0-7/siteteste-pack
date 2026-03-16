@@ -61,6 +61,7 @@
                   let ytID = '';
                   if (secao.youtube.includes('v=')) ytID = secao.youtube.split('v=')[1].split('&')[0];
                   else if (secao.youtube.includes('youtu.be/')) ytID = secao.youtube.split('youtu.be/')[1].split('?')[0];
+                  else if (secao.youtube.includes('shorts/')) ytID = secao.youtube.split('shorts/')[1].split('?')[0];
                   
                   if (ytID) {
                       mediaHTML = `<iframe class="media-dinamica video-yt" src="https://www.youtube.com/embed/${ytID}" frameborder="0" allowfullscreen></iframe>`;
