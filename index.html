@@ -13,8 +13,9 @@
     <header class="hero">
         <h1>Destrave sua Produtividade com o Melhor Pack de Prompts</h1>
         <p>Economize horas de trabalho com templates prontos e testados para IA.</p>
-     <a href="#" class="btn-comprar" id="botao-checkout">Garantir Meu Pack Agora</a>
-</header>
+        <img src="" alt="" class="imagem-produto" style="display:none;">
+        <a href="#" class="btn-comprar" id="botao-checkout">Garantir Meu Pack Agora</a>
+    </header>
 
     <section class="beneficios">
         <h2>O que você vai receber?</h2>
@@ -34,16 +35,39 @@
         <p>&copy; 2026 Seus Prompts. Todos os direitos reservados.</p>
     </footer>
 
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
         });
       }
-    });
-  }
-</script>
+    </script>
+
+    <script>
+      // Este script lê os dados do seu painel e coloca no site automaticamente
+      fetch('/data/home.json')
+        .then(response => {
+          if (!response.ok) throw new Error('Ainda não há dados no painel');
+          return response.json();
+        })
+        .then(data => {
+          if(data.titulo) document.querySelector('.hero h1').innerText = data.titulo;
+          if(data.descricao) document.querySelector('.hero p').innerText = data.descricao;
+          if(data.link_checkout) document.getElementById('botao-checkout').href = data.link_checkout;
+          if(data.texto_botao) document.getElementById('botao-checkout').innerText = data.texto_botao;
+          
+          const imgElement = document.querySelector('.imagem-produto');
+          if(data.imagem) {
+            imgElement.src = data.imagem;
+            imgElement.style.display = 'block';
+          }
+        })
+        .catch(err => console.log('Aguardando publicação no painel...'));
+    </script>
+
 </body>
 </html>

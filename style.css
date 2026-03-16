@@ -38,17 +38,36 @@ body {
 
 /* Botão de Compra - Estilo Cyberpunk/Neon */
 .btn-comprar {
+   /* Estilo base do botão */
+.btn-comprar {
+    display: inline-block;
     background: transparent;
-    color: #00d2ff;
+    color: #00d2ff; /* Ciano futurista */
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 18px 45px;
     font-size: 1.2rem;
     font-weight: bold;
     border: 2px solid #00d2ff;
-    border-radius: 50px; /* Bordas bem arredondadas */
-    transition: 0.3s;
-    box-shadow: 0 0 15px rgba(0, 210, 255, 0.2), inset 0 0 10px rgba(0, 210, 255, 0.1);
-    display: inline-block;
+    border-radius: 50px;
+    transition: all 0.4s ease; /* Transição suave */
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* O efeito de "Brilho" ao passar o mouse (Hover) */
+.btn-comprar:hover {
+    background: #00d2ff;
+    color: #050914; /* Cor escura do fundo */
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.8), 0 0 60px rgba(0, 210, 255, 0.4);
+    transform: scale(1.05); /* Aumenta levemente o tamanho */
+    text-shadow: none;
+}
+
+/* Efeito de clique (Active) */
+.btn-comprar:active {
+    transform: scale(0.98);
+}
 }
 
 /* Efeito ao passar o mouse no botão */

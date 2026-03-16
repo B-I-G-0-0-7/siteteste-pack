@@ -1,20 +1,47 @@
 backend:
   name: git-gateway
-  branch: main # Certifique-se de que sua branch no GitHub se chama main
+  branch: main
 
-media_folder: "img" # Onde as imagens novas serão salvas
+media_folder: "img"
 public_folder: "img"
 
 collections:
-  - name: "landing_page"
-    label: "Página de Vendas"
+  # CONFIGURAÇÃO DA PÁGINA INICIAL
+  - name: "paginas"
+    label: "Páginas"
     files:
-      - file: "index.html" # O arquivo que vamos editar
-        label: "Conteúdo da Home"
+      - file: "data/home.json" # Agora vamos salvar os dados em um arquivo separado
+        label: "Página de Vendas (Home)"
         name: "home"
         fields:
           - { label: "Título Principal", name: "titulo", widget: "string" }
           - { label: "Subtítulo", name: "descricao", widget: "text" }
-          - { label: "Imagem do Produto", name: "imagem", widget: "image" }
-          - { label: "Preço do Pack", name: "preco", widget: "string" }
-          - { label: "Link de Pagamento", name: "link_checkout", widget: "string" } # Nova linha!
+          - { label: "Imagem de Destaque", name: "imagem", widget: "image" }
+          - { label: "Link do Botão de Compra", name: "link_checkout", widget: "string" }
+          - { label: "Texto do Botão", name: "texto_botao", widget: "string" }
+
+  # CONFIGURAÇÃO PARA PRODUTOS INDEPENDENTES (FUTURO)
+  - name: "produtos"
+    label: "Meus Produtos"
+    folder: "data/produtos" # Cada novo produto vira um arquivo aqui
+    create: true # Permite que você crie novos produtos pelo painel
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nome do Produto", name: "title", widget: "string" }
+      - { label: "Preço", name: "preco", widget: "string" }
+      - { label: "Descrição Curta", name: "body", widget: "markdown" }
+      - { label: "Imagem do Produto", name: "imagem", widget: "image" }
+      - { label: "Link de Oferta", name: "link_venda", widget: "string" }
+
+      # CONFIGURAÇÃO PARA PRODUTOS INDEPENDENTES (FUTURO)
+  - name: "produtos"
+    label: "Meus Produtos"
+    folder: "data/produtos" # Cada novo produto vira um arquivo aqui
+    create: true # Permite que você crie novos produtos pelo painel
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nome do Produto", name: "title", widget: "string" }
+      - { label: "Preço", name: "preco", widget: "string" }
+      - { label: "Descrição Curta", name: "body", widget: "markdown" }
+      - { label: "Imagem do Produto", name: "imagem", widget: "image" }
+      - { label: "Link de Oferta", name: "link_venda", widget: "string" }
