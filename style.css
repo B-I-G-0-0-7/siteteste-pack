@@ -32,26 +32,29 @@ body {
     border-bottom: 1px solid rgba(0, 210, 255, 0.1);
 }
 
+/* Destaque maior ao Nome (Logo) */
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
     text-decoration: none;
     color: #fff;
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 2rem; /* Aumentei o tamanho (era 1.5rem) */
+    font-weight: 800; /* Deixei a fonte mais grossa */
+    text-shadow: 0 0 15px rgba(0, 210, 255, 0.6); /* Adicionei o brilho neon no nome */
+    letter-spacing: 1px; /* Afastei um pouquinho as letras pra ficar mais elegante */
 }
 
 .logo img {
     width: 40px;
 }
 
+/* Deixando os menus mais juntos */
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 15px; /* Diminuí o espaço entre eles (era 30px) */
 }
-
 .nav-links a {
     color: #a0aec0;
     text-decoration: none;
