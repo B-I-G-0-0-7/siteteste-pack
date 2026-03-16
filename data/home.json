@@ -5,5 +5,14 @@
   "imagem": "img/logo.jpg",
   "texto_botao": "Teste (texto do botão)",
   "link_checkout": "https://kiwify.com.br/",
-  "preco": "99,99"
+  "preco": "99,99",
+  "secoes": [
+    {
+      "layout": "Midia na Direita",
+      "tipo_midia": "Imagem",
+      "titulo": "Trabalhe junto com a IA",
+      "texto": "Trabalhe em parceria com a IA e transforme tecnologia em oportunidade e aproveite a chance de aumentar sua renda e ainda conquistar sua liberdade com um saldo extra no fim do mês. 🚀💰",
+      "imagem": "img/b6e0e282-9280-4e6c-8122-61bfd89a89a6.png"
+    }
+  ]
 }
