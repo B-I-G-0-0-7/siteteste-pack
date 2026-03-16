@@ -17,3 +17,4 @@ collections:
           - { label: "Subtítulo", name: "descricao", widget: "text" }
           - { label: "Imagem do Produto", name: "imagem", widget: "image" }
           - { label: "Preço do Pack", name: "preco", widget: "string" }
+          - { label: "Link de Pagamento", name: "link_checkout", widget: "string" } # Nova linha!
