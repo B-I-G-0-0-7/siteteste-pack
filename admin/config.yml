@@ -10,10 +10,10 @@ show_preview_links: false
 
 collections:
   - name: "paginas"
-    label: "🖥️ Configurações do Site" # Ícone ajuda a identificar rápido
-    delete: false # Segurança para você não deletar a home sem querer
+    label: "🖥️ Configurações do Site" 
+    delete: false 
     editor:
-      preview: false # Foca apenas nos campos de texto
+      preview: false 
     files:
       - file: "data/home.json"
         label: "Página Inicial (Home)"
@@ -33,7 +33,7 @@ collections:
   - name: "produtos"
     label: "📦 Catálogo de Packs"
     folder: "data/produtos"
-    create: true # Botão 'New Produto' para o seu futuro catálogo
+    create: true 
     slug: "{{slug}}"
     editor:
       preview: false
